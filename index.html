@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Design</title>
+     <!-- tailwindcss cdn -->
+     <script src="https://cdn.tailwindcss.com"></script>
+    
+     <!-- 폰트 라이브러리 -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+     
+     <!-- 폰트 적용 -->
+     <style>
+         body{
+             font-family: "Poppins", sans-serif;
+         }
+     </style>
+</head>
+<body>
+    <!-- header -->
+    <!-- 
+        item-center : 수직 정렬 로고와 메뉴버튼 가운데
+        hover : 반전효과
+     -->
+    <header class="fixed top-0 w-screen bg-gray-400 lg:hidden z-10">
+        <div class="flex items-center h-16">
+            <button id="openBtn" class="px-4 text-2xl text-white hover:bg-gray-200 hover:text-black">
+                &#9776;
+            </button>
+            <h1 class="ml-2 text-2xl text-white font-semibold">Chan's Company</h1>
+        </div>
+    </header>
+
+    <!-- side bar -->
+    <!-- 
+        h-screen : 100 뷰포트
+     -->
+    <nav id="sideBar" class="fixed top-0 left-0 w-80 h-screen bg-gray-400 px-4 hidden lg:block z-30">
+        <div class="mt-12 h-48 px-4 flex flex-col justify-center">
+            <h2 class="text-2xl text-white font-semibold">Chan's <br> Company</h2>
+        </div>
+        <ul>
+            <li class="">
+                <a href="#" class="block text-lg font-semibold text-white px-4 py-2 hover:bg-gray-200 hover:text-black">Home</a>
+            </li>
+            <li class="">
+                <a href="#showcase" class="block text-lg font-semibold text-white px-4 py-2 hover:bg-gray-200 hover:text-black">Showcase</a>
+            </li>
+            <li class="">
+                <a href="#services" class="block text-lg font-semibold text-white px-4 py-2 hover:bg-gray-200 hover:text-black">Services</a>
+            </li>
+            <li class="">
+                <a href="#designers" class="block text-lg font-semibold text-white px-4 py-2 hover:bg-gray-200 hover:text-black">Designers</a>
+            </li>
+            <li class="">
+                <a href="#packages" class="block text-lg font-semibold text-white px-4 py-2 hover:bg-gray-200 hover:text-black">Packages</a>
+            </li>
+            <li class="">
+                <a href="#contact" class="block text-lg font-semibold text-white px-4 py-2 hover:bg-gray-200 hover:text-black">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- overlay -->
+    <!-- 
+        inset-0 : 포지션(top, bottom, left, right)값이 모두 0이다 (띄어쓰기로 따로따로 지정도 가능)
+        bg-black/80 : rgba /뒤는 알파값 0.8
+     -->
+    <div id="navOverlay" class="fixed inset-0 bg-black/80 z-20 hidden"></div>
+    
+    <!-- main -->
+    <main class="mt-24 max-w-screen-lg px-4 lg:ml-80">
+        <h1 class="text-7xl font-semibold my-8">Interior Design</h1>
+
+        <!-- showcase -->
+        <!-- 
+            border-t-8 : border top 8px
+            border ~~~ rounded : 모서리를 ~~~ 만큼 둥글게 만듬
+            grid-cols-1 : 고정된 넓이를 가짐
+            gap-4 : grid의 갭차이 1rem
+         -->
+        <div id="showcase">
+            <h2 class="text-gray-400 text-5xl font-semibold my-8">Showcase.</h2>
+            <div class="w-16 border-t-8 border-t-gray-400 rounded"></div>
+        </div>
+        
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div class="">
+                <img 
+                    class="cursor-pointer opacity-80 hover:opacity-100"
+                    src="https://www.w3schools.com/w3images/kitchenconcrete.jpg"
+                    alt="kitchenconcrete"
+                    onclick="openModal(this)">
+                <img 
+                    class="mt-4 cursor-pointer opacity-80 hover:opacity-100"
+                    src="https://www.w3schools.com/w3images/livingroom.jpg"
+                    alt="livingroom"
+                    onclick="openModal(this)">
+                <img 
+                    class="mt-4 cursor-pointer opacity-80 hover:opacity-100"
+                    src="https://www.w3schools.com/w3images/diningroom.jpg"
+                    alt="diningroom"
+                    onclick="openModal(this)">
+            </div>
+
+            <div class="">
+                <img 
+                    class="cursor-pointer opacity-80 hover:opacity-100"
+                    src="https://www.w3schools.com/w3images/atrium.jpg"
+                    alt="atrium"
+                    onclick="openModal(this)">
+                <img 
+                    class="mt-4 cursor-pointer opacity-80 hover:opacity-100"
+                    src="https://www.w3schools.com/w3images/bedroom.jpg"
+                    alt="bedroom"
+                    onclick="openModal(this)">
+                <img 
+                    class="mt-4 cursor-pointer opacity-80 hover:opacity-100"
+                    src="https://www.w3schools.com/w3images/livingroom2.jpg"
+                    alt="livingroom2"
+                    onclick="openModal(this)">
+            </div>
+        </div>
+
+        <!-- modal image -->
+        <div id="modalOverlay" class="fixed inset-0 bg-black/80 z-40 hidden">
+            <img id="modal" class="block w-3/4 mt-24 mx-auto" src="" alt="">
+        </div>
+
+        <!-- service -->
+        <div id="services" class="mt-24">
+            <h2 class="text-gray-400 text-5xl my-8 font-semibold">Services.</h2>
+            <div class="w-16 border-t-8 border-t-gray-400 rounded"></div>
+        </div>
+
+        <p class="my-4">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+
+        <p class="my-4">
+            Some text about our services - what we de and what we offer.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Ullam ex cupiditate id exercitationem. Maxime fuga ea laudantium, nemo, dicta delectus minima neque necessitatibus quas aliquam voluptatibus quos, excepturi alias non?
+        </p>
+
+        <!-- designers -->
+        <div id="designers" class="mt-24">
+            <h2 class="text-gray-400 text-5xl my-8 font-semibold">designer.</h2>
+            <div class="w-16 border-t-8 border-t-gray-400 rounded"></div>
+        </div>
+
+        <p class="my-4">
+            the best team in the world
+        </p>
+        <p class="my-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Ea minima rerum itaque expedita incidunt perferendis dolores ad possimus quaerat, nostrum sunt eaque quia nihil, neque harum quis, non consequuntur maiores?
+        </p>
+        <p class="my-4">
+            our designers are thoughtfully chosen.
+        </p>
+
+         <!-- 
+            tracking-wide : 글자간격
+         -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-gray-100">
+                <img class="w-full" src="https://www.w3schools.com/w3images/team2.jpg"
+                alt="Jhon Doe">
+                <div class="px-4 pb-4">
+                    <h3 class="text-2xl my-4 font-semibold tracking-wide">Jhon Doe</h3>
+                    <p class="my-4 text-gray-400">CEO & Founder</p>
+                    <p class="my-4">
+                        phasellus  eget enim eu faucibus vestibulum. Suspendisse sodales pellentesque elementum
+                    </p>
+                    <button class="w-full p-2 text-white bg-gray-400 hover:bg-gray-5000">Contact</button>
+                </div>
+            </div>
+
+            <div class="bg-gray-100">
+                <img class="w-full" src="https://www.w3schools.com/w3images/team1.jpg"
+                alt="Jane Doe">
+                <div class="px-4 pb-4">
+                    <h3 class="text-2xl my-4 font-semibold tracking-wide">Jane Doe</h3>
+                    <p class="my-4 text-gray-400">Designer</p>
+                    <p class="my-4">
+                        phasellus  eget enim eu faucibus vestibulum. Suspendisse sodales pellentesque elementum
+                    </p>
+                    <button class="w-full p-2 text-white bg-gray-400 hover:bg-gray-5000">Contact</button>
+                </div>
+            </div>
+
+            <div class="bg-gray-100">
+                <img class="w-full" src="https://www.w3schools.com/w3images/team3.jpg"
+                alt="Mike Ross">
+                <div class="px-4 pb-4">
+                    <h3 class="text-2xl my-4 font-semibold tracking-wide">Mike Ross</h3>
+                    <p class="my-4 text-gray-400">artist</p>
+                    <p class="my-4">
+                        phasellus  eget enim eu faucibus vestibulum. Suspendisse sodales pellentesque elementum
+                    </p>
+                    <button class="w-full p-2 text-white bg-gray-400 hover:bg-gray-5000">Contact</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- packages -->
+        <div id="packages" class="mt-24">
+            <h2 class="text-gray-400 text-5xl my-8 font-semibold">Packages</h2>
+            <div class="w-16 border-t-8 border-t-gray-400 rounded"></div>
+        </div>
+
+        <p class="my-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eius alias doloremque labore, blanditiis qui dolores, sint voluptas quasi impedit illo! Minus harum consequatur dolores voluptatibus perspiciatis provident libero hic?
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ul class="bg-gray-100">
+                <li class="bg-gray-600 p-8">
+                    <h3 class="text-2xl text-white text-center">Basic</h3>
+                </li>
+                <li class="text-center p-4 border-b">Floorplanning</li>
+                <li class="text-center p-4 border-b">18 hours support</li>
+                <li class="text-center p-4 border-b">Photography</li>
+                <li class="text-center p-4 border-b">20% furniture discount</li>
+                <li class="text-center p-4 border-b">Good deals</li>
+                <li class="p-4 border-b">
+                    <span class="block text-center text-3xl my-4">$ 199</span>
+                    <span class="block text-center text-gray-400">per room</span>
+                </li>
+                <li class="p-4 text-center">
+                    <button class="px-4 py-2 text-white bg-gray-600 hover:bg-gray-700">
+                        Sign Up
+                    </button>
+                </li>
+            </ul>
+
+            <ul class="bg-gray-100">
+                <li class="bg-gray-600 p-8">
+                    <h3 class="text-2xl text-white text-center">Pro</h3>
+                </li>
+                <li class="text-center p-4 border-b">Floorplanning</li>
+                <li class="text-center p-4 border-b">18 hours support</li>
+                <li class="text-center p-4 border-b">Photography</li>
+                <li class="text-center p-4 border-b">20% furniture discount</li>
+                <li class="text-center p-4 border-b">Good deals</li>
+                <li class="p-4 border-b">
+                    <span class="block text-center text-3xl my-4">$ 249</span>
+                    <span class="block text-center text-gray-400">per room</span>
+                </li>
+                <li class="p-4 text-center">
+                    <button class="px-4 py-2 text-white bg-gray-600 hover:bg-gray-700">
+                        Sign Up
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- contact -->
+        <div id="contact" class="mt-24">
+            <h2 class="text-gray-400 text-5xl my-8 font-semibold">Contact.</h2>
+            <div class="w-16 border-t-8 border-t-gray-400 rounded"></div>
+        </div>
+
+        <p class="my-4">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nostrum consequuntur illum quae reprehenderit dignissimos nam dolores perspiciatis illo, magni, harum veritatis quasi quas ipsam minus in ab nemo voluptatem.
+        </p>
+
+        <div class="my-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="felx flex-col items-center">
+                <svg class="w-8 fill-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+                </svg>
+                <p class="mt-4 text-center">
+                    032 123 4567 <br>
+                    010 1234 5678
+                </p>
+            </div>
+
+            <div class="felx flex-col items-center">
+                <svg class="w-8 fill-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M481 31C445.1-4.8 386.9-4.8 351 31l-15 15L322.9 33C294.8 4.9 249.2 4.9 221.1 33L135 119c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0L255 66.9c9.4-9.4 24.6-9.4 33.9 0L302.1 80 186.3 195.7 316.3 325.7 481 161c35.9-35.9 35.9-94.1 0-129.9zM293.7 348.3L163.7 218.3 99.5 282.5c-48 48-80.8 109.2-94.1 175.8l-5 25c-1.6 7.9 .9 16 6.6 21.7s13.8 8.1 21.7 6.6l25-5c66.6-13.3 127.8-46.1 175.8-94.1l64.2-64.2z"/>
+                </svg>
+                </svg>
+                <p class="mt-4 text-center">
+                    Gyeongwon-Daero <br>
+                    Bupyeong-gu <br>
+                    incheon kr
+                </p>
+            </div>
+            
+            <div class="felx flex-col items-center">
+                 <div class="felx flex-col items-center">
+                    <svg class="w-8 fill-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+                    </svg>
+                </svg>
+                </svg>
+                <p class="mt-4 text-center">
+                    ckstnzz56@naver.com <br>
+                </p>
+            </div>
+        </div>
+    </main>
+        <!-- footer -->
+        <footer class="mt-24 p-12 bg-gray-200">
+            <p class="text-right">
+                Powered by <a href="#" class="underline"> Chan</a>
+            </p>
+        </footer>
+
+        <script>
+            // navbar
+            openBtn.addEventListener("click", function(){
+                sideBar.classList.remove('hidden');
+                navOverlay.classList.remove('hidden');
+            })
+
+            navOverlay.addEventListener("click", function(){
+                this.classList.remove('hidden');
+                sideBar.classList.remove('hidden');
+            })
+            
+            // modal image
+            function openModal(img){
+                modal.src = img.src;
+                modal.alt = img.alt;
+                modalOverlay.classList.remove('hidden');
+            }
+
+            modalOverlay.addEventListener('click', function(){
+                this.classList.add('hidden')
+            })
+        </script>
+
+
+</body>
+</html>
